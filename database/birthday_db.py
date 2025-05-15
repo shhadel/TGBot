@@ -28,3 +28,14 @@ def delete_birthday(user_id: int, name: str) -> None:
     """Удаляет день рождения для пользователя"""
     if user_id in birthdays and name in birthdays[user_id]:
         del birthdays[user_id][name]
+
+reminders_enabled = {}
+
+def enable_reminders(user_id: int):
+    reminders_enabled[user_id] = True
+
+def disable_reminders(user_id: int):
+    reminders_enabled[user_id] = False
+
+def is_reminders_enabled(user_id: int) -> bool:
+    return reminders_enabled.get(user_id, True)  # По умолчанию включено
