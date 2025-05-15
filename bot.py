@@ -1,15 +1,12 @@
+import asyncio
 from aiogram import Bot, Dispatcher, F
 from aiogram.filters import Command
 from aiogram.types import Message
-from dotenv import load_dotenv
-import os
+from config_data.config import load_config
 
-load_dotenv()
 
-BOT_TOKEN = os.getenv("BOT_TOKEN")
-
-# Создаем объекты бота и диспетчера
-bot = Bot(token=BOT_TOKEN)
+config = load_config()  # Загружаем конфиг
+bot = Bot(token=config.tg_bot.token)  # Берём токен из .env
 dp = Dispatcher()
 
 
